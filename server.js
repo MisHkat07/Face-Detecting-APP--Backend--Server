@@ -30,6 +30,6 @@ app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcry
 app.put('/image',  (req, res) => { image.handleImage(req, res, db);});
 app.get('/profile/:id', (req, res) => { profile.handleProfile(req, res, db);});
 
-app.listen(3000, () => {
-    console.log('app is running');
+app.listen(process.env.PORT || 3000, () => {
+    console.log(`app is running on ${process.env.PORT}`);
 });
