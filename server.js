@@ -12,10 +12,8 @@ const image = require("./Controllers/image");
 const db = knex({
   client: 'pg',
   connection: {
-    host : 'postgresql-closed-97232',
-    user : 'postgres',
-    password : '',
-    database : 'face-detect-app'
+    host : process.env.DATABASE_URL,
+    ssl: true
   }
 });
 
