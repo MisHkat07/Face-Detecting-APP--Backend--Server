@@ -1,4 +1,3 @@
-// @ts-nocheck
 const express = require("express");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt-nodejs");
@@ -11,23 +10,26 @@ const profile = require("./Controllers/profile");
 const image = require("./Controllers/image");
 
 const db = knex({
-	client: 'pg',
-	connection: {
-		connectionString: process.env.DATABASE_URL,
-		ssl: {
-			rejectUnauthorized: false,
-		},
-	},
+  client: 'pg',
+  connection: {
+    host : '127.0.0.1',
+    user : 'postgres',
+    password : '',
+    database : 'face-detect-app'
+  }
 });
 
 app.use(bodyParser.json());
 app.use(cors());
-app.get('/', (req, res) => { res.send("Success");});
+app.get('/', (req, res) => {
+    res.send("Success");
+});
+
 app.post('/signin', (req, res) => { signin.handleSignin(req, res, db, bcrypt);});
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt);});
 app.put('/image',  (req, res) => { image.handleImage(req, res, db);});
 app.get('/profile/:id', (req, res) => { profile.handleProfile(req, res, db);});
 
-app.listen(process.env.PORT || 3000, () => {
-    console.log(`app is running on ${process.env.PORT}`);
+app.listen(3000, () => {
+    console.log('app is running');
 });
