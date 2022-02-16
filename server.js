@@ -1,3 +1,4 @@
+// @ts-nocheck
 const express = require("express");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt-nodejs");
@@ -10,11 +11,13 @@ const profile = require("./Controllers/profile");
 const image = require("./Controllers/image");
 
 const db = knex({
-  client: 'pg',
-  connection: {
-    connectingString : process.env.DATABASE_URL,
-    ssl: true
-  }
+	client: 'pg',
+	connection: {
+		connectionString: process.env.DATABASE_URL,
+		ssl: {
+			rejectUnauthorized: false,
+		},
+	},
 });
 
 app.use(bodyParser.json());
