@@ -9,18 +9,20 @@ const signin = require("./controllers/signin");
 const profile = require("./controllers/profile");
 const image = require("./controllers/image");
 
+app.use(cors());
+
 const db = knex({
   client: 'pg',
   connection: {
     host : '127.0.0.1',
     user : 'postgres',
-    password : 'test',
-    database : 'smart-brain'
+    password : '',
+    database : 'postgresql-perpendicular-08980'
   }
 });
 
 app.use(bodyParser.json());
-app.use(cors());
+
 app.get('/', (req, res) => {
     res.send("Success");
 });
