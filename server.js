@@ -46,7 +46,7 @@ app.post('/signin', (req, res) => {
     })
     .catch(err => res.status(400).json('wrong credentials'))
 })
-
+app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt);});
 app.put('/image', (req, res) => { image.handleImage(req, res, db);});
 app.get('/profile/:id', (req, res) => { profile.handleProfile(req, res, db); });
 
