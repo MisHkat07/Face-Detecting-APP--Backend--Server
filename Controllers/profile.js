@@ -13,4 +13,4 @@ const handleProfileGet = (req, res, db) => {
 
 module.exports = {
   handleProfileGet
-}
+};
