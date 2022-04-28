@@ -12,9 +12,10 @@ const image = require("./Controllers/image");
 const db = knex({
   client: 'pg',
    connection: {
-    connectionString : process.env.DATABASE_URL,
-    password : '',
-    database : 'postgresql-perpendicular-08980'
+    host : 'ec2-3-223-213-207.compute-1.amazonaws.com',
+    user : 'pxgiuswmcdwekv',
+    password : 'af317227385f5cd4a44b8cacff2b5b527c2107daaecb58812b6741da3c245bdd',
+    database : 'dfo21rh7doo8dn'
   }
 });
 
