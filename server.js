@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
-
+const port = process.env.PORT || 4000;
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
@@ -33,6 +33,6 @@ app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcry
 app.put('/image',  (req, res) => { image.handleImage(req, res, db);});
 app.get('/profile/:id', (req, res) => { profile.handleProfile(req, res, db);});
 
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log('app is running');
 });
